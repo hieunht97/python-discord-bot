@@ -20,7 +20,7 @@ from discord.ext import commands
 def run_discord_bot():
     
     #Discord bot token
-    TOKEN = 'MTA3NjMwMjQ3MDk1Njk5MDU3Ng.GRJ1mK.P7g7J-eJL7atiyiElNNHywu1GAqJNSRPsftXUk'
+    TOKEN = 'import your token here'
     intents = discord.Intents.default()
     intents.members = True
     intents.message_content = True
@@ -40,23 +40,6 @@ def run_discord_bot():
         
         return {"name": name, "symbol": symbol, "price": price, "ath": ath}
 
-    #Get crypto data using CoinMarketCap
-    def getCryptoPrices2(crypto_list, api_key):
-    # Make a request to the CoinMarketCap API to get the cryptocurrency data
-        headers = {'X-CMC_PRO_API_KEY': api_key}
-        url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
-        price = {}
-        for crypto in crypto_list:
-            params = {'symbol': crypto}
-            response = requests.get(url, headers=headers, params=params).json()
-
-            # Extract the relevant information from the response
-            if 'data' in response:
-                data = response['data'][crypto]['quote']['USD']
-                price[crypto] = {'price': data['price'], 'volume_24h': data['volume_24h']}
-                
-        return price
-
     #get crypto ID
     def getAllCryptoIds():
         params = {'vs_currency': 'usd'}
@@ -70,7 +53,7 @@ def run_discord_bot():
     #search for Artist and return artist info using Spotify API
     def search_for_artist(artist_name):
         url = "https://api.spotify.com/v1/search"
-        token = 'BQDnAHw-I3qWwUhI2jraTGO--AZNzPOAbQurN6aCVIudhuLr0Nr2X4fhOVeA38VAGA21rgBVPV7YXb89aK7tWT_qkhPOiC3qlwWhZUdV_BrN0PMSrnxrtYPOTULYswpBMWF-h1i7SO4zcvZeAiPedeOAOaIJk_bF7VN6YyluBYCcBhmGMlkek1mfNjDqC__0ltgU'
+        token = 'Your token here'
         headers = {"Authorization": "Bearer " + token}
         
         # Replace spaces with %20 in the artist name
@@ -95,7 +78,7 @@ def run_discord_bot():
     #search for top 5 track of an artist in US
     def search_top_track(artist_id):
         url = f'https://api.spotify.com/v1/artists/{artist_id}/top-tracks?market=US&limit=5'
-        token = 'BQDnAHw-I3qWwUhI2jraTGO--AZNzPOAbQurN6aCVIudhuLr0Nr2X4fhOVeA38VAGA21rgBVPV7YXb89aK7tWT_qkhPOiC3qlwWhZUdV_BrN0PMSrnxrtYPOTULYswpBMWF-h1i7SO4zcvZeAiPedeOAOaIJk_bF7VN6YyluBYCcBhmGMlkek1mfNjDqC__0ltgU'
+        token = 'Your token here'
         headers = {"Authorization": "Bearer " + token}
         
         result = requests.get(url, headers=headers)
